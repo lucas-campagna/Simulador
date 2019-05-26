@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<p>Bem vindo ao simulador de questões de Pré-militares!</p>
+<p>A plataforma ainda se encontra em construção, mas algumas funcionalidades básicas já se encontram disponíveis para uso.</p>
+<p>A proposta da plataforma é ser um ambiente de questões de física que testem os candidatos a concursos militares. Em seguida, tentaremos apresentar ao candidato um resumo do seu desempenho, separado por área, para que este saiba o que melhorar.</p>
+<p>
+	A plataforma possui as seguintes funcionalidades:
+</p>
+<ol>
+	<li>Questões de Provas Anteriores
+		<ul>
+			<li>AFA</li>
+			<li>EFOMM</li>
+			<li>CN*</li>
+			<li>EN*</li>
+			<li>EsPCEx</li>
+		</ul>
+	</li>
+	<li>Sistema de Login</li>
+	<li>Análise dos Resultado*</li>
+</ol>
+<p>Itens marcados com * encontram-se em desenvolvimento.</p>
+<button id='btn_show' onclick="switchLoginMenu()">Iniciar Testes</button> 
+
+<div id="login">
+	<div id='close' onclick="switchLoginMenu()">&#10005</div>
+	<center>Login</center>
+	<br>
+	<form action="/login" method="POST">
+		<div>Nome</div>
+		<input type="text" name="username">
+		<br><br>
+		<div>Provas</div>
+		<input type="checkbox" name="AFA" >AFA
+		<br>
+		<input type="checkbox" name="CN" >CN
+		<br>
+		<input type="checkbox" name="EN" >EN
+		<br>
+		<input type="checkbox" name="EFOMM" >EFOMM
+		<br>
+		<input type="checkbox" name="EsPCEx" >EsPCEx
+		<br>
+		<br>
+		<input type="submit" value="Entrar">
+	</form>
+</div>
+
+<script type="text/javascript">
+var loginShow = false;
+login = document.getElementById('login')
+
+login.style.visibility='hidden';
+
+function switchLoginMenu(){
+	// var body = document.getElementsByTagName('body')[0]
+	loginShow=!loginShow
+	if(loginShow)
+		animate(function(t){
+			login.style.opacity	= t;
+			login.style.visibility='visible';
+		});
+	else
+		animate(function(t){
+			login.style.opacity	= 1-t;
+			login.style.visibility='hidden';
+		});
+}
+</script>
+
+{% endblock %}

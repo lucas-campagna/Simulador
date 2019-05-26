@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/style.css') }}">
+	<script type="text/javascript" src="{{ url_for('static',filename='js/index.js') }}"></script>
+	<title>Simulador</title>
+</head>
+<body>
+	<div id="header"></div>
+	{% block body %} {% endblock %}
+
+	<div id="background"></div>
+	<script type="text/javascript">
+		var header = document.getElementById('header');
+
+		if(document.cookie.split(';').some(function(e){return e.split('=')[0] == 'fazendoProva' && e.split('=')[1] == 'true';}))
+			printExamTime(header);
+		else
+			header.innerHTML='<h1>Simulador</h1>';
+	</script>
+</body>
+</html>

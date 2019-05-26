@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+<div class="login">
+<p>Bem vindo, {{username}}</p>
+<p>O tempo restante de prova ficará disponível to topo da tela.</p>
+<p>O teste se iniciará em alguns instantes.</p>
+<span id="tempo" style="position:fixed;top:0;right:0;"></span>
+<p>Boa Prova!</p>
+</div>
+
+<script type="text/javascript">
+	var tag = document.getElementById('tempo');
+	var tempo = 12;
+	setTimeout(function(){
+		location.href='/prova';
+	},tempo*1000);
+
+	setInterval(function(){
+		tag.innerHTML = tempo;
+		tempo -= 1
+	},1000);
+</script>
+
+{% endblock %}

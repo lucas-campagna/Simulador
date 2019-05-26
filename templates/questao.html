@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<img src="/static/imgs/{{image}}">
+<br>
+
+<select>
+	{% for option in options %}
+		<option value="{{ option }}">{{ option }}</option>
+	{% endfor %}
+</select>
+
+{% endblock %}
